@@ -1,2 +1,2 @@
 <?php
-echo "yay";
+include "View/main.php";
