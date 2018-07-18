@@ -68,6 +68,8 @@ body { font-family: 'Open Sans', sans-serif; font-size: 16px; line-height: 1; ba
 	Main
 \* ------------------------------------------------------------ */
 
+.main { margin-bottom: 50px; }
+
 .blogs:after { content: ''; display: table; clear: both; font-size: 0; }
 .blog-post { width: 75%; margin-bottom: 50px; position: relative; float: left; box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.4); background-color: #fff;  }
 .blog-post .post__head { margin: 10px; padding: 10px 0; border-bottom: 3px solid #e8eae8; font-weight: 600; color: #333; line-height: 1.5; }
@@ -99,7 +101,7 @@ body { font-family: 'Open Sans', sans-serif; font-size: 16px; line-height: 1; ba
     Footer
 \* ------------------------------------------------------------ */
 
-.footer { height: 50px; background-color: #c1c1c1; box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.4); font-weight: 800; }
+.footer { position: absolute; bottom: 0; height: 50px; width: 100%; background-color: #c1c1c1; box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.4); font-weight: 800; }
 .footer span { position: relative; top: 15px; }
 
 
