@@ -1,0 +1,129 @@
+/* ------------------------------------------------------------ *\
+	Base
+\* ------------------------------------------------------------ */
+
+* { margin: 0; padding: 0; }
+
+body { font-family: 'Open Sans', sans-serif; font-size: 16px; line-height: 1; background: url('/css/img/background.png'); }
+
+.shell { position: relative; max-width: 1000px; margin: 0 auto; }
+.shell:after { display: table; clear: both; content: ''; font-size: 0; }
+
+/* ------------------------------------------------------------ *\
+	Header
+\* ------------------------------------------------------------ */
+
+.header { margin-bottom: 50px; height: 650px; background: url('/css/img/intro.jpg'); background-size: cover; background-repeat: no-repeat;  }
+.header:after { box-shadow: 0px 0px 20px 0px rgba(76, 75, 75, 0.51); }
+.header .header__title { display: inline-block; margin-top: 100px; font-size: 80px; color: #fff; text-shadow: 5px 5px 20px #000; }
+
+.header .login { display: inline-block; float: right; padding: 5px; margin-top: 100px; border-radius: 10px; }
+
+.header:after { height: 10px; background: #e8eae8; }
+
+/* ------------------------------------------------------------ *\
+	Login
+\* ------------------------------------------------------------ */
+
+.login { width: 300px; background-color: rgba(255,255,255,0.75); box-shadow: 0px 0px 20px 0px rgba(76, 75, 75, 0.51); }
+.login .field { float: left; }
+
+.login .title { padding-top: 10px; text-align: center; font-size: 24px; }
+.login-form { box-shadow: inset 0px 0px 1px #868686; padding: 5px; margin: 2px;	border-radius: 2px; }
+.login-form .form__row { padding: 10px; text-align: center; }
+.login-form .form__row:after { display: table; clear: both; content: ''; font-size: 0; }
+
+.login-form .form__controls { margin-bottom: 10px; text-align: center; }
+.login-form .form__controls span { font-size: 14px; }
+.login-form .form__controls span a { text-decoration: none; color: #0000ff; transition: .3s; }
+.login-form .form__controls span a:hover { color: #ff0000; }
+.login-form input[type="text"],input[type="email"],input[type="password"] { width: 80%; height: 20px; margin: 0 25px; padding: 5px; font-weight: 600; color: #7a7d7a;  background: rgba(206, 204, 204, 0.2); border: 1px solid #8e8e8e59;    box-shadow: inset 0px 0px 20px #44424245, 0px 0px 5px #dedede;  transition: .3s; }
+.login-form input[type="text"]:focus, input[type="email"]:focus ,input[type="password"]:focus { outline: none; border: 1px solid #8e8e8e59; box-shadow: inset 0px 0px 10px #c1c1c1, 0px 0px 2px #b5b5b5f7;}
+
+/* ------------------------------------------------------------ *\
+	Account-panel
+\* ------------------------------------------------------------ */
+
+.banner-wrapper { width: 50%;	margin: auto; text-align: center; }
+
+.account-tabs { width: 100%; text-align: center; font-size: 14px; color:#333;}
+.account-tabs:after { content: ''; display: table; clear: both; font-size: 0; }
+.account-tabs .info:hover, .account-tabs .blog:hover { cursor: pointer; transform: scale(1.1); box-shadow: 0px 0px 1px #555555;}
+.account-tabs .info, .account-tabs .blog {	width: 50%; float: left; background: #e8eae8; padding: 7px 0px; box-sizing: border-box; transition: .2s ease-in-out;}
+
+.account-info { clear: both; }
+
+.account-panel .content { font-size: 13px; line-height: 1.3em; padding: 10px; text-align: justify; }
+.account-panel .banner-section { height: 100px; background-image: url("img/panel-background.jpg"); background-repeat: no-repeat; background-position: center; background-size: cover;}
+.account-panel .btn { width: 100%; padding: 7px 0px;}
+.account-panel .account-static-text { padding-top: 10px; }
+.account-panel img{ height: 20%; width: 20%; text-align: center; margin: auto;	font-size: 30px; background: #3c3a3a; color: #e8eae8; border-radius: 50%; margin-top: 10px;}
+
+.account-blog { display: none; }
+.account-blog a { text-decoration: none; cursor: pointer; font-size: 16px; color: #666; transition: .3s; }
+.account-blog a:hover { color: #000; }
+
+
+/* ------------------------------------------------------------ *\
+	Main
+\* ------------------------------------------------------------ */
+
+.main { margin-bottom: 50px; }
+
+.blogs:after { content: ''; display: table; clear: both; font-size: 0; }
+.blog-post { width: 75%; margin-bottom: 50px; position: relative; float: left; box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.4); background-color: #fff;  }
+.blog-post .post__head { margin: 10px; padding: 10px 0; border-bottom: 3px solid #e8eae8; font-weight: 600; color: #333; line-height: 1.5; }
+.blog-post .post__head:after { position: absolute; top: 0; right: 0; content: '';  width: 0; height: 0; border-style: solid; border-width: 0 50px 50px 0; border-color: transparent #e8eae8 transparent transparent; }
+.blog-post .post__body { padding: 20px; text-align: justify; line-height: 1.2; }
+.blog-post span a { text-decoration: none; color: #000; }
+.pagination-controls { margin-right: 250px; margin-bottom: 50px; text-align: center; }
+.pagination-controls a { font-family: 'Open Sans',sans-serif; color: #333; text-decoration: none; }
+
+.blog-add { width: 100%; float: unset; margin-bottom: 25px; text-align: center; display: block;}
+.title-blog {font-size: 30px; font-weight: 600; display: block; padding: 15px 0px; background: #e8eae8; color: #555;}
+.innerCnt{ display: block;}
+.innerCnt form { width: 50%; margin: auto; padding-bottom: 25px;}
+.innerCnt form label, .innerCnt form input, .innerCnt form textarea .innerCnt select { display: block;}
+.innerCnt form label { text-align: left; }
+.innerCnt form input, .innerCnt form textarea , .innerCnt select{    width: 100%; box-sizing: border-box; padding: 10px 0px 10px 5px;}
+.innerCnt form textarea { resize: none;}
+.innerCnt form label {padding: 10px 0px; font-size: 15px; }
+
+.post__head .post__title { margin-bottom: 5px; }
+
+/* --------------------------Sidebar----------------------------------  */
+.sidebar { width: 20%; float: right; margin-bottom: 15px;}
+.category-list { list-style: none; line-height: 30px; }
+.category-list li { border-bottom: 3px solid #e8eae8; margin: 10px; font-size: 15px; }
+.category-list a {text-decoration: none; font-size: 15px; color: #333;}
+
+/* ------------------------------------------------------------ *\
+    Footer
+\* ------------------------------------------------------------ */
+
+.footer { position: absolute; bottom: 0; height: 50px; width: 100%; background-color: #c1c1c1; box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.4); font-weight: 800; }
+.footer span { position: relative; top: 15px; }
+
+
+/* ------------------------------------------------------------ *\
+    Btn
+\* ------------------------------------------------------------ */
+
+.btn { display: inline-block; min-width: 60px; padding: 10px 10px; font-size: 14px; border: 0;  background: #aaa; font-family: Tahoma, sans-serif; line-height: 1; text-decoration: none; color: #000; transition: .3s; cursor: pointer; }
+.btn:hover { background: #777; }
+
+
+/* ------------------------------------------------------------ *\
+    Mobile
+\* ------------------------------------------------------------ */
+
+@media(max-width: 767px) {
+    .header .header__title { margin: 0; font-size: 60px; display: block; text-align: center; }
+    .header .login {  width: 90%; text-align: center; box-sizing: border-box; position: relative; top: 70px; display:block;    margin-left: auto; margin-right: auto; float: unset; margin-top: 0px;}
+    .login .field { float: unset;}
+    .header {height: 650px;}
+
+    .login-form input[type="text"],input[type="email"],input[type="password"] {width: 90%; display: block;        margin: auto;        height: 30px;        margin-top: 10px;        box-sizing: border-box;}
+    .sidebar, .blog-post { width: 90%; float: unset; margin: auto;}
+
+}
