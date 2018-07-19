@@ -22,8 +22,6 @@ class ModelRepository
 
     public function fetch($className,...$params)
     {
-//        $obj = $params;
-        file_put_contents('debug.txt', print_r($params, true));
         return $this->dbConnector->fetchObject("Model\\$className",...$params);
     }
 }
