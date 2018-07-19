@@ -1,5 +1,5 @@
 <?php
-
+namespace Model;
 class User
 {
     private $id;
@@ -16,7 +16,7 @@ class User
      * @param $password
      * @param $email
      */
-    public function __construct($id, $username, $name, $password, $email)
+    public function __construct($id = null, $username = null, $name = null, $password = null, $email = null)
     {
         $this->id = $id;
         $this->username = $username;
@@ -105,6 +105,4 @@ class User
     {
         $this->email = $email;
     }
-
-
 }

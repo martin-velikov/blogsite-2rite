@@ -1,3 +1,5 @@
+<?php include "Model/User.php"; ?>
+<?php session_start(); print_r($_SESSION['User']); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
