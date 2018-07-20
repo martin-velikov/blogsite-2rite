@@ -1,22 +1,16 @@
 <?php
 
-namespace Controller;
+namespace Model;
 
-include_once "../Model/DbConnector.php";
-include_once "../Model/ModelRepository.php";
 
-use Model\DbConnector;
-use Model\ModelRepository;
-use Model\User;
-
-class Login
+class UserAuth
 {
     public function validLogin($username,$password)
     {
         $class = explode('\\',User::class);
         $class = end($class);
 
-        $connect = new DbConnector();
+        $connect = new ModelRepository(new DbConnector(), $class);
         $id = $connect->fetchObject(
             "Model\\$class",
             $sql ='Select id,username,password from '.strtolower($class).'s where username=? and password=?',
@@ -33,9 +27,3 @@ class Login
         } header('location:..');
     }
 }
-
-$username = $_POST['username'];
-$password = $_POST['password'];
-$user = new Login();
-$user->validLogin($username,$password);
-

@@ -20,8 +20,49 @@ class ModelRepository
 
     public function fetch($className,...$params)
     {
-        return $this->dbConnector->fetchObject("Model\\$className",...$params);
+        return $this->fetchObject("Model\\$className",...$params);
     }
 
+    public function fetchObject($className, ...$params) {
+        $result = $this->dbConnector->executeQuery($params[0],...$params);
 
+        if (!$result) {
+            return null;
+        }
+
+        $properties = $result->fetch_assoc();
+        $object = new $className();
+
+        foreach ($properties as $property=>$value) {
+            $object->{$this->getSetter($property)}($value);
+        }
+
+        return $object;
+    }
+
+    public function fetchArray($className, ...$params){
+        $result = $this->dbConnector->executeQuery($params[0],...$params);
+
+        if (!$result) {
+            return null;
+        }
+
+        $objects[] = null;
+        while ($properties = $result->fetch_assoc()) {
+            $object = new $className();
+            foreach ($properties as $property=>$value) {
+                $object->{$this->getSetter($property)}($value);
+            }
+            array_push($objects,$object);
+        }
+        array_shift($objects);
+        return $objects;
+    }
+
+    private function getSetter($snakeCase)
+    {
+        return array_reduce(explode('_', $snakeCase), function ($carry, $word) {
+            return $carry .= ucfirst($word);
+        },'set');
+    }
 }

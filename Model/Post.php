@@ -3,31 +3,30 @@
 namespace Model;
 
 
-class UserPost
+    class Post
 {
     public $username;
     public $date;
     public $title;
-    public $blogContent;
+    public $postContent;
     public $categoryName;
 
     /**
-     * UserPost constructor.
+     * Post constructor.
      * @param $username
      * @param $date
      * @param $title
-     * @param $blogContent
+     * @param $postContent
      * @param $categoryName
      */
-    public function __construct($username = null, $date = null, $title = null, $blogContent = null, $categoryName = null)
+    public function __construct($username = null, $date = null, $title = null, $postContent = null, $categoryName = null)
     {
         $this->username = $username;
         $this->date = $date;
         $this->title = $title;
-        $this->blogContent = $blogContent;
+        $this->postContent = $postContent;
         $this->categoryName = $categoryName;
     }
-
 
     /**
      * @return null
@@ -90,15 +89,15 @@ class UserPost
     /**
      * @return mixed
      */
-    public function getBlogContent()
+    public function getPostContent()
     {
-        return $this->blogContent;
+        return $this->postContent;
     }
     /**
-     * @param mixed $blogContent
+     * @param mixed $postContent
      */
-    public function setBlogContent($blogContent): void
+    public function setBlogContent($postContent): void
     {
-        $this->blogContent = $blogContent;
+        $this->postContent = $postContent;
     }
 }

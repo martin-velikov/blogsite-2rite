@@ -3,7 +3,7 @@
 namespace Model;
 
 include_once "User.php";
-include_once "UserPost.php";
+include_once "Post.php";
 
 class DbConnector
 {
@@ -38,7 +38,6 @@ class DbConnector
         return $this->connection;
     }
 
-
     public function executeQuery($sql, ...$params)
     {
         array_shift($params);
@@ -53,47 +52,4 @@ class DbConnector
         return $connect->get_result();
     }
 
-    public function fetchObject($className, ...$params) {
-        $result = $this->executeQuery($params[0],...$params);
-
-        if (!$result) {
-            return null;
-        }
-
-        $properties = $result->fetch_assoc();
-        $object = new $className();
-
-        foreach ($properties as $property=>$value) {
-            $object->{$this->getSetter($property)}($value);
-        }
-
-        return $object;
-    }
-
-    public function fetchArray($className, ...$params){
-        $result = $this->executeQuery($params[0],...$params);
-
-        if (!$result) {
-            return null;
-        }
-
-        $objects[] = null;
-        while ($properties = $result->fetch_assoc()) {
-            $object = new $className();
-            foreach ($properties as $property=>$value) {
-                $object->{$this->getSetter($property)}($value);
-            }
-            array_push($objects,$object);
-        }
-
-        array_shift($objects);
-        return $objects;
-    }
-
-    private function getSetter($snakeCase)
-    {
-        return array_reduce(explode('_', $snakeCase), function ($carry, $word) {
-            return $carry .= ucfirst($word);
-        },'set');
-    }
 }
