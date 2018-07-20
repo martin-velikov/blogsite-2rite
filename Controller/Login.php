@@ -25,13 +25,12 @@ class Login
             $password)->getId();
         if ($id != null)
         {
-
             $conn = new ModelRepository(new DbConnector(),"$class");
             $user = $conn->getById($id);
             session_start();
             $_SESSION['User'] = $user;
-            header('location:../index.php');
-        } else echo "УЖАС";
+            header('location:..');
+        } header('location:..');
     }
 }
 

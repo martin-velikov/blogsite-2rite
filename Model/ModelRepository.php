@@ -1,7 +1,6 @@
 <?php
 
 namespace Model;
-include_once "DbConnector.php";
 
 class ModelRepository
 {
@@ -16,7 +15,6 @@ class ModelRepository
 
     public function getById($id)
     {
-
         return $this->fetch("$this->className",'SELECT * FROM ' . strtolower($this->className) . 's where id=? LIMIT 1', 'i', $id);
     }
 
@@ -24,4 +22,6 @@ class ModelRepository
     {
         return $this->dbConnector->fetchObject("Model\\$className",...$params);
     }
+
+
 }

@@ -21,6 +21,8 @@ body { font-family: 'Open Sans', sans-serif; font-size: 16px; line-height: 1; ba
 
 .header:after { height: 10px; background: #e8eae8; }
 
+.header .header__body:after { display: table; clear: both; content: ''; font-size: 0; }
+
 /* ------------------------------------------------------------ *\
 	Login
 \* ------------------------------------------------------------ */
@@ -44,7 +46,7 @@ body { font-family: 'Open Sans', sans-serif; font-size: 16px; line-height: 1; ba
 	Account-panel
 \* ------------------------------------------------------------ */
 
-.banner-wrapper { width: 50%;	margin: auto; text-align: center; }
+.banner-wrapper { width: 50%; height: 150px; margin: auto; text-align: center; }
 
 .account-tabs { width: 100%; text-align: center; font-size: 14px; color:#333;}
 .account-tabs:after { content: ''; display: table; clear: both; font-size: 0; }
@@ -101,7 +103,7 @@ body { font-family: 'Open Sans', sans-serif; font-size: 16px; line-height: 1; ba
     Footer
 \* ------------------------------------------------------------ */
 
-.footer { position: absolute; bottom: 0; height: 50px; width: 100%; background-color: #c1c1c1; box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.4); font-weight: 800; }
+.footer {  height: 50px; width: 100%; background-color: #c1c1c1; box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.4); font-weight: 800; }
 .footer span { position: relative; top: 15px; }
 
 

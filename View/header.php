@@ -1,9 +1,7 @@
 <div class="header">
     <div class="shell">
         <div class="header__body" id="headerBody">
-            <form action="Controller/Logout.php" method="post">
-                <input type="submit" value="Logout" class="btn" name="logout">
-            </form>
+
             <a href="index.php"><h1 class="header__title">2Rite</h1></a>
 
             <?php

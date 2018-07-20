@@ -36,7 +36,7 @@ $user = $_SESSION['User'];
                 <a href="?">Delete blog</a>
             </div>
         </div>
-        <form action="controller/Logout.php" method="post">
+        <form action="Controller/Logout.php" method="post">
             <input type="hidden" value="secret" name="passCode">
             <input type="Submit" class="btn" value="Logout" name="logout">
         </form>

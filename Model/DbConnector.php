@@ -2,7 +2,8 @@
 
 namespace Model;
 
-include "User.php";
+include_once "User.php";
+include_once "UserPost.php";
 
 class DbConnector
 {
@@ -37,6 +38,7 @@ class DbConnector
         return $this->connection;
     }
 
+
     public function executeQuery($sql, ...$params)
     {
         array_shift($params);
@@ -66,6 +68,26 @@ class DbConnector
         }
 
         return $object;
+    }
+
+    public function fetchArray($className, ...$params){
+        $result = $this->executeQuery($params[0],...$params);
+
+        if (!$result) {
+            return null;
+        }
+
+        $objects[] = null;
+        while ($properties = $result->fetch_assoc()) {
+            $object = new $className();
+            foreach ($properties as $property=>$value) {
+                $object->{$this->getSetter($property)}($value);
+            }
+            array_push($objects,$object);
+        }
+
+        array_shift($objects);
+        return $objects;
     }
 
     private function getSetter($snakeCase)
