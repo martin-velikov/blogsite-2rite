@@ -8,6 +8,8 @@
 
 namespace Model;
 
+include_once "app/Model/ModelRepository.php";
+include_once "app/Model/DbConnector.php";
 
 class PostsRepository
 {

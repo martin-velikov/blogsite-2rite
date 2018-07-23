@@ -1,6 +1,7 @@
+<?php include_once "app/Model/User.php"; ?>
 <div class="login" id="login">
     <div class="title">Login</div>
-    <form action="/" method="post" class="login-form">
+    <form action="login" method="post" class="login-form">
         <div class="form__row">
             <input type="text" class="field" name="username" placeholder="Your username" pattern="[a-zA-Z]{4,25}" required>
         </div><!-- /.form__row -->

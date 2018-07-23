@@ -19,7 +19,6 @@
             }
         }
 
-
         public function content($type){
             if($type == 'head') {
                 return $this->_head;

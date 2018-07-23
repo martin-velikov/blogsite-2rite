@@ -1,7 +1,7 @@
 <?php
 
 namespace Model\PostHandlers;
-
+include_once "app/Model/PostsRepository.php";
 
 use Model\PostsRepository;
 
@@ -27,5 +27,4 @@ class GetAllPosts extends PostsRepository
             $this->displayPosts($allPosts);
         }
     }
-
 }

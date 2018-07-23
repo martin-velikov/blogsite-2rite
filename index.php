@@ -1,10 +1,34 @@
 <?php
-    session_start();
+include_once "app/Model/User.php";
+
     define('DS', DIRECTORY_SEPARATOR);
     define('ROOT', dirname(__FILE__));
 
     $url = isset($_SERVER['REQUEST_URI']) ? explode('/', ltrim($_SERVER['REQUEST_URI'], '/')) : [];
-    require_once (ROOT . DS . 'core' . DS . 'bootstrap.php');
+
+// load configuration and helper functions
+require_once(ROOT . DS . 'config' . DS . 'config.php');
+require_once(ROOT . DS . 'app' . DS . 'lib' . DS . 'helpers' . DS . 'functions.php');
+
+// Autoload Classes
+function autoload($className) {
+    if (file_exists(ROOT . DS . 'core' . DS . $className . '.php')) {
+        require_once (ROOT . DS . 'core' . DS . $className . '.php');
+    }elseif (file_exists(ROOT . DS . 'app'. DS . 'Controller' . DS . $className . '.php')) {
+        require_once (ROOT . DS . 'app'. DS . 'Controller' . DS . $className . '.php');
+    }elseif (file_exists(ROOT . DS . 'app'. DS . 'Model' . DS . $className . '.php')) {
+        require_once (ROOT . DS . 'app'. DS . 'Model' . DS . $className . '.php');
+    }
+}
+
+spl_autoload_register('autoload');
+session_start();
+
+//Route the request
+Router::route($url);
+
+
+
 ?>
 
 <!DOCTYPE html>

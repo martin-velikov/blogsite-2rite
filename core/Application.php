@@ -18,14 +18,14 @@
                 ini_set('error_log', ROOT . DS . 'tmp' . DS . 'logs' . DS . 'errors.log');
             }
         }
-        // Security: Makes sure that thise globals wont be used
+        // Security: Makes sure that these globals wont be used
         private function _unregister_globals(){
             if (ini_get('register_globals')) {
                 $globalAry = ['_SESSION', '_COOKIE', '_POST', '_GET', '_REQUEST', '_SERVER', '_ENV', '_FILES'];
-                foreach ($globalAry as $g) {
-                    foreach ($GLOBALS[$g] as $k => $v ) {
-                        if ($GLOBALS[$k] == $v){
-                            unset($GLOBALS[$k]);
+                foreach ($globalAry as $global) {
+                    foreach ($GLOBALS[$global] as $key => $value ) {
+                        if ($GLOBALS[$key] == $value){
+                            unset($GLOBALS[$key]);
                         }
                     }
                 }

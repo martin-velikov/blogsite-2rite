@@ -8,7 +8,7 @@
 
 namespace Model\PostHandlers;
 
-
+include_once "app/Model/PostsRepository.php";
 use Model\PostsRepository;
 
 class GetPostByTitle extends PostsRepository
@@ -28,7 +28,6 @@ class GetPostByTitle extends PostsRepository
                      inner join post_category on '.strtolower($this->getClass()).'s.category=post_category.id
                      where '.strtolower($this->getClass()).'s.title like ?',
                      's','%'.$title.'%');
-
         if ($allPosts != null) {
             $this->displayPosts($allPosts);
         }
