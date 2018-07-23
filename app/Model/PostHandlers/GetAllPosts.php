@@ -1,6 +1,7 @@
 <?php
 
 namespace Model\PostHandlers;
+
 include_once "app/Model/PostsRepository.php";
 
 use Model\PostsRepository;

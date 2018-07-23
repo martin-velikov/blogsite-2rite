@@ -2,7 +2,8 @@
 
 class Router
 {
-    public static function route($url){
+    public static function route($url)
+    {
 
         //  Controller
         $controller = (isset($url[0]) && $url[0] != '') ? ucwords($url[0]) : DEFAULT_CONTROLLER;
@@ -21,7 +22,7 @@ class Router
         //$disspatch->registerAction($queryParams) is the same as bellow
         if (method_exists($controller, $action)) {
             call_user_func_array([$disspatch, $action], $queryParams); //calls a callback function with arrays of parameters in it
-        }else {
+        } else {
             die('that method does not exist in the controller \"' . $controller_name . '\"');
         }
     }

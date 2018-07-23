@@ -1,11 +1,14 @@
 <?php
 
-class Logout extends Controller {
-    public function __construct($controller, $action){
+class Logout extends Controller
+{
+    public function __construct($controller, $action)
+    {
         parent::__construct($controller, $action);
     }
 
-    public function indexAction() {
+    public function indexAction()
+    {
         if (isset($_POST['logout'])) {
             if (ini_get("session.use_cookies")) {
                 $params = session_get_cookie_params();

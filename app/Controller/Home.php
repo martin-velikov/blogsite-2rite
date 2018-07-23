@@ -1,12 +1,15 @@
 <?php
 
-    class Home extends Controller {
+    class Home extends Controller
+    {
 
-        public function __construct($controller, $action){
+        public function __construct($controller, $action)
+        {
             parent::__construct($controller, $action);
         }
 
-        public function indexAction(){
+        public function indexAction()
+        {
             $this->view->render('header');
             $this->view->render('main');
             $this->view->render('footer');

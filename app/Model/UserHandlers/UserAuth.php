@@ -1,6 +1,7 @@
 <?php
 
 namespace Model;
+
 include_once "app/Model/User.php";
 
 class UserAuth

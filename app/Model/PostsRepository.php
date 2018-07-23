@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Martin
- * Date: 20-Jul-18
- * Time: 13:40
- */
 
 namespace Model;
 
@@ -44,7 +38,8 @@ class PostsRepository
         return $this->connect;
     }
 
-    public function displayPosts($allPosts) {
+    public function displayPosts($allPosts)
+    {
         foreach ($allPosts as $post) {
             echo
                 "<div class='blog-post' id=\"blog-post\">

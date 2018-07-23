@@ -1,14 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Martin
- * Date: 20-Jul-18
- * Time: 14:49
- */
 
 namespace Model\PostHandlers;
 
 include_once "app/Model/PostsRepository.php";
+
 use Model\PostsRepository;
 
 class GetPostByTitle extends PostsRepository
