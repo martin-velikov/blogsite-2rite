@@ -1,7 +1,5 @@
 <?php
 
-namespace Model;
-
 class User
 {
     private $id;
@@ -26,7 +24,6 @@ class User
         $this->password = $password;
         $this->email = $email;
     }
-
 
     /**
      * @return mixed

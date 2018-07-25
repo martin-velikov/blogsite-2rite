@@ -1,5 +1,13 @@
 <?php
     define('DEBUG', true);
+    define('DS', DIRECTORY_SEPARATOR);
+    define('ROOT', dirname(__DIR__));
+
+    //DB config
+    define('DB_HOST' , '172.18.86.59');
+    define('DB_NAME' , 'vagrant');
+    define('DB_USER' , 'root');
+    define('DB_PASSWORD' , 'vagrant');
 
     define('DEFAULT_CONTROLLER', 'Home'); //Calls DEFAULT_CONTROLLER if there isn't one called
     define('DEFAULT_LAYOUT' , 'default'); //If no layout is set in the controller, use this one;

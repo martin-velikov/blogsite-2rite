@@ -1,7 +1,5 @@
 <?php
 
-namespace Model;
-
     class Post
 {
     public $username;

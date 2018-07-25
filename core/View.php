@@ -1,65 +1,51 @@
 <?php
-
-    class View
-    {
+//TODO interface with render method so all views must have a render method
+    class View {
         protected $_head, $_body, $_siteTitle = SITE_TTTLE, $_outputBuffer, $_layout = DEFAULT_LAYOUT;
 
-        public function __construct()
-        {
-
-        }
         //in case of a different OS we switch the seperator
-        public function render($viewName)
-        {
+        public function render($viewName){
             $viewAry = explode('/', $viewName);
             $viewString = implode(DS, $viewAry);
-
-            if (file_exists(ROOT . DS . 'app' . DS . 'View' . DS . $viewString . '.php'))
-            {
+            if (file_exists(ROOT . DS . 'app' . DS . 'View' . DS . $viewString . '.php')){
                 include (ROOT . DS . 'app' . DS . 'View' . DS . $viewString . '.php');
-               //include (ROOT . DS . 'app' . DS . 'Views' . DS . 'layouts'. DS . $this->_layout . '.php');
-            } else {
+               include (ROOT . DS . 'app' . DS . 'View' . DS . 'layouts'. DS . $this->_layout . '.php');
+            }else {
                 die('The view \"' . $viewName . '\" does not exist');
             }
         }
 
-        public function content($type)
-        {
+        public function content($type){
             if($type == 'head') {
                 return $this->_head;
-            } else if($type == 'body'){
+            }else if($type == 'body'){
                 return $this->_body;
             }
             return false;
         }
 
-        public function start($type)
-        {
+        public function start($type){
             //stores in if its head or body
             $this->_outputBuffer = $type;
             ob_start();
         }
-        public function end()
-        {
+        public function end() {
             if ($this->_outputBuffer == 'head'){
                 $this->_head = ob_get_clean();
-            } else if($this->_outputBuffer == 'body') {
+            }else if($this->_outputBuffer == 'body') {
                 $this->_body = ob_get_clean();
-            } else {
+            }else {
                 die('You must first run the start method');
             }
         }
 
-        public function siteTitle()
-        {
+        public function siteTitle() {
            return $this->_siteTitle;
         }
-        public function setSiteTitle($title)
-        {
+        public function setSiteTitle($title){
             $this->_siteTitle = $title;
         }
-        public function setLayout($path)
-        {
+        public function setLayout($path){
             $this->_layout = $path;
         }
     }

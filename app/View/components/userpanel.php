@@ -1,6 +1,5 @@
 <?php
 $user = $_SESSION['User'];
-
 ?>
 <div class="login">
     <div class="account-panel">

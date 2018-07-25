@@ -1,11 +1,5 @@
 <?php
 
-namespace Model\PostHandlers;
-
-include_once "app/Model/PostsRepository.php";
-
-use Model\PostsRepository;
-
 class GetPostByTitle extends PostsRepository
 {
     public function __construct()
@@ -15,7 +9,7 @@ class GetPostByTitle extends PostsRepository
 
     public function getPosts($title)
     {
-        $allPosts = $this->getConnect()->fetchArray(
+        $allPosts = $this->fetchArray(
             "Model\\".$this->getClass(),
             $sql = 'select username,date,category_name,title,blog_content
                      from '.strtolower($this->getClass()).'s
@@ -24,8 +18,7 @@ class GetPostByTitle extends PostsRepository
                      where '.strtolower($this->getClass()).'s.title like ?',
                      's','%'.$title.'%');
         if ($allPosts != null) {
-            $this->displayPosts($allPosts);
+            return $allPosts;
         }
     }
-
 }

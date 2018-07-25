@@ -1,6 +1,6 @@
 <?php
 
-class Logout extends Controller
+class Logout extends Router
 {
     public function __construct($controller, $action)
     {

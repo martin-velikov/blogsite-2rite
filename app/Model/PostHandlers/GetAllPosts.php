@@ -1,11 +1,5 @@
 <?php
 
-namespace Model\PostHandlers;
-
-include_once "app/Model/PostsRepository.php";
-
-use Model\PostsRepository;
-
 class GetAllPosts extends PostsRepository
 {
     public function __construct()
@@ -16,7 +10,7 @@ class GetAllPosts extends PostsRepository
     public function getPosts()
     {
         $id = 0;
-        $allPosts = $this->getConnect()->fetchArray(
+        $allPosts = $this->fetchArray(
             "Model\\".$this->getClass(),
             $sql ='select username,date,category_name,title,blog_content 
             from '.strtolower($this->getClass()).'s 
@@ -25,7 +19,7 @@ class GetAllPosts extends PostsRepository
             'i',$id);
 
         if ($allPosts != null) {
-            $this->displayPosts($allPosts);
+            return $allPosts;
         }
     }
 }

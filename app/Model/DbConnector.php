@@ -1,10 +1,5 @@
 <?php
 
-namespace Model;
-
-include_once "User.php";
-include_once "Post.php";
-
 class DbConnector
 {
     private $connection;
@@ -24,7 +19,7 @@ class DbConnector
 
     public function __construct()
     {
-        $this->connection = new \mysqli($this->HOST, $this->USER,
+        $this->connection = new mysqli($this->HOST, $this->USER,
             $this->PASSWORD, $this->DB);
 
         if(mysqli_connect_error()) {
@@ -46,10 +41,8 @@ class DbConnector
         if ($sql) {
             $connect->bind_param(...$params);
         }
-
         $connect->execute();
 
         return $connect->get_result();
     }
-
 }

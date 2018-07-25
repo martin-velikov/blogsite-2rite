@@ -1,11 +1,7 @@
 <?php
 
-include_once "app/Model/PostHandlers/GetAllPosts.php";
-include_once "app/Model/PostHandlers/GetPostByTitle.php";
-
-    class Posts extends Controller
+    class Posts extends Router
     {
-
         public function __construct($controller, $action)
         {
             parent::__construct($controller, $action);
@@ -13,13 +9,13 @@ include_once "app/Model/PostHandlers/GetPostByTitle.php";
 
         public function indexAction()
         {
-            $allPosts = new \Model\PostHandlers\GetAllPosts();
-            $allPosts->getPosts();
+            $this->view->render('components/main');
         }
 
         public function titleAction($title)
         {
-            $allPosts = new \Model\PostHandlers\GetPostByTitle();
-            $allPosts->getPosts($title);
+            $allPosts = new GetPostByTitle();
+            $this->view->render('components/main');
+            return $allPosts->getPosts($title);
         }
     }

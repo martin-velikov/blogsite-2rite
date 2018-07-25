@@ -1,12 +1,12 @@
 <?php
 
-class PostsRepository extends ModelRepository
+class UserRepository extends ModelRepository
 {
     private $class;
 
     public function __construct()
     {
-        $this->class = explode('\\',Post::class);
+        $this->class = explode('\\',User::class);
         $this->class = end($this->class);
         parent::__construct($this->getConnect(), $this->class);
     }

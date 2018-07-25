@@ -1,11 +1,6 @@
 <?php
 
-include_once "app/Model/ModelRepository.php";
-include_once "app/Model/DbConnector.php";
-include_once "app/Model/UserHandlers/UserAuth.php";
-
-
-class Login extends Controller
+class Login extends Router
 {
     public function __construct($controller, $action)
     {
@@ -17,7 +12,7 @@ class Login extends Controller
         if (isset($_POST['login']) && $_POST['passCode'] === 'secret') {
             $username = $_POST['username'];
             $password = $_POST['password'];
-            $user = new \Model\UserAuth();
+            $user = new UserAuth();
             $user->validLogin($username,$password);
         }
     }

@@ -1,8 +1,5 @@
 <?php
 
-namespace Model\PostHandlers;
-
-use Model\PostsRepository;
 
 class GetPostsByCategory extends PostsRepository
 {
@@ -12,7 +9,7 @@ class GetPostsByCategory extends PostsRepository
     }
 
     public function getPosts($category){
-        $allPosts = $this->getConnect()->fetchArray(
+        $allPosts = $this->fetchArray(
             "Model\\".$this->getClass(),
             $sql = 'select username,date,category_name,title,blog_content
             from post_category

@@ -1,6 +1,6 @@
 <?php
 
-    class Home extends Controller
+    class Home extends Router
     {
 
         public function __construct($controller, $action)
@@ -10,8 +10,6 @@
 
         public function indexAction()
         {
-            $this->view->render('header');
-            $this->view->render('main');
-            $this->view->render('footer');
+            $this->view->render('home/index');
         }
     }

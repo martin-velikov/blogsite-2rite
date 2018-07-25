@@ -1,18 +1,18 @@
 <?php
 
-namespace Model;
-
-include_once "app/Model/User.php";
-
-class UserAuth
+class UserAuth extends UserRepository
 {
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
     public function validLogin($username,$password)
     {
         $class = explode('\\',User::class);
         $class = end($class);
 
-        $connect = new ModelRepository(new DbConnector(), $class);
-        $id = $connect->fetchObject(
+        $id = $this->fetchObject(
             "Model\\$class",
             $sql ='Select id,username,password from '.strtolower($class).'s where username=? and password=?',
             'ss',
@@ -20,8 +20,7 @@ class UserAuth
             $password)->getId();
         if ($id != null)
         {
-            $conn = new ModelRepository(new DbConnector(),"$class");
-            $user = $conn->getById($id);
+            $user = $this->getById($id);
             session_start();
             $_SESSION['User'] = $user;
             header('location:..');

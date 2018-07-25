@@ -1,7 +1,5 @@
 <?php
 
-namespace Model;
-
 class ModelRepository
 {
     private $dbConnector;
@@ -20,11 +18,13 @@ class ModelRepository
 
     public function fetch($className,...$params)
     {
-        return $this->fetchObject("Model\\$className",...$params);
+        return $this->fetchObject("$className",...$params);
     }
 
     public function fetchObject($className, ...$params) {
         $result = $this->dbConnector->executeQuery($params[0],...$params);
+        $className = explode("\\",$className);
+        $className = end($className);
 
         if (!$result) {
             return null;
@@ -36,12 +36,13 @@ class ModelRepository
         foreach ($properties as $property=>$value) {
             $object->{$this->getSetter($property)}($value);
         }
-
         return $object;
     }
 
     public function fetchArray($className, ...$params){
         $result = $this->dbConnector->executeQuery($params[0],...$params);
+        $className = explode("\\",$className);
+        $className = end($className);
 
         if (!$result) {
             return null;
