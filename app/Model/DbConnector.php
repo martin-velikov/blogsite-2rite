@@ -4,10 +4,6 @@ class DbConnector
 {
     private $connection;
     private static $instance;
-    private $HOST = "172.26.11.68";
-    private $USER = "root";
-    private $PASSWORD = "vagrant";
-    private $DB = "vagrant";
 
     public static function getInstance()
     {
@@ -19,8 +15,8 @@ class DbConnector
 
     public function __construct()
     {
-        $this->connection = new mysqli($this->HOST, $this->USER,
-            $this->PASSWORD, $this->DB);
+        $this->connection = new mysqli(DB_HOST, DB_USER,
+            DB_PASSWORD, DB_NAME);
 
         if(mysqli_connect_error() || !$this->connection) {
             trigger_error("Failed to connect to to MySQL: " . mysqli_connect_error(),

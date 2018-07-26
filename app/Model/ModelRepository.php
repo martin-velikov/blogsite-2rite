@@ -13,11 +13,6 @@ class ModelRepository
         $this->table = strtolower(end($class)) . 's';
     }
 
-    public function getClass()
-    {
-        return $this->className;
-    }
-
     public function getById($id)
     {
         return $this->fetch('SELECT * FROM ? where id=? LIMIT 1', 'si', $this->table, $id);
@@ -54,7 +49,6 @@ class ModelRepository
             }
             $objects[] = $object;
         }
-
         return $objects;
     }
 

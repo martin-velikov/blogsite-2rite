@@ -63,8 +63,10 @@
             } else if (file_exists(ROOT . DS . 'app'. DS . 'Model' . DS .'PostHandlers'. DS . $className . '.php')) {
                 require_once (ROOT . DS . 'app'. DS . 'Model' . DS .'PostHandlers'. DS . $className . '.php');
             } else if (file_exists(ROOT . DS . 'app'. DS . 'Model' . DS .'UserHandlers'. DS . $className . '.php')) {
-                require_once (ROOT . DS . 'app'. DS . 'Model' . DS .'UserHandlers'. DS . $className . '.php');
-            }
+                require_once(ROOT . DS . 'app' . DS . 'Model' . DS . 'UserHandlers' . DS . $className . '.php');
+            } else if (file_exists(ROOT . DS . 'config' . DS . 'config' . '.php')) {
+                    require_once(ROOT . DS . 'config' . DS . 'config' . '.php');
+                }
         }
 
         private function dispatch()

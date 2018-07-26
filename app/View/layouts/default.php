@@ -16,7 +16,7 @@
         <div class="shell">
             <div class="header__body" id="headerBody">
 
-                <a href="home"><h1 class="header__title">2Rite</h1></a>
+                <a href="http://pagrant.local"><h1 class="header__title">2Rite</h1></a>
 
                 <?php
                 if (!isset($_SESSION['User'])) {

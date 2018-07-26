@@ -126,6 +126,6 @@ body { font-family: 'Open Sans', sans-serif; font-size: 16px; line-height: 1; ba
     .header {height: 650px;}
 
     .login-form input[type="text"],input[type="email"],input[type="password"] {width: 90%; display: block;        margin: auto;        height: 30px;        margin-top: 10px;        box-sizing: border-box;}
-    .sidebar, .blog-post { width: 90%; float: unset; margin: auto;}
-
+    .blog-post { width: 90%; float: unset; margin: auto;}
+    .sidebar { display: none; }
 }

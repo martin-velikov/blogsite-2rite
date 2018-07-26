@@ -4,7 +4,7 @@
     define('ROOT', dirname(__DIR__));
 
     //DB config
-    define('DB_HOST' , '172.18.86.59');
+    define('DB_HOST' , '172.26.11.68');
     define('DB_NAME' , 'vagrant');
     define('DB_USER' , 'root');
     define('DB_PASSWORD' , 'vagrant');
