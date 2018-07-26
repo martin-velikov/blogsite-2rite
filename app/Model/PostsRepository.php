@@ -2,25 +2,44 @@
 
 class PostsRepository extends ModelRepository
 {
-    private $class;
-
     public function __construct()
     {
-        $this->class = explode('\\',Post::class);
-        $this->class = end($this->class);
-        parent::__construct($this->getConnect(), $this->class);
+         parent::__construct(Post::class);
     }
 
-    /**
-     * @return mixed
-     */
-    public function getClass()
+    public function getAllPosts()
     {
-        return $this->class;
+        $allPosts = $this->fetchArray(
+            'select username,date,category_name,title,blog_content 
+            from '.$this->table.' 
+            inner join users on user_id=users.id 
+            inner join post_category on category=post_category.id');
+
+        return $allPosts ?? [];
     }
 
-    public function getConnect()
+    public function getPostsByTitle($title)
     {
-        return $connect = DbConnector::getInstance();
+        $allPosts = $this->fetchArray(
+            'select username,date,category_name,title,blog_content
+                     from '.$this->table.'
+                     inner join users on user_id = users.id
+                     inner join post_category on category=post_category.id
+                     where title like ?',
+            's', '%'.$title.'%');
+
+        return $allPosts ?? [];
+    }
+
+    public function getPostsByCategory($category){
+        $allPosts = $this->fetchArray(
+           'select username,date,category_name,title,blog_content
+            from post_category
+            inner join '.strtolower($this->getClass()).'s on post_category.id='.strtolower($this->getClass()).'s.category
+            inner join users on '.strtolower($this->getClass()).'s.user_id=users.id
+            where category_name=?',
+            's',$category);
+
+        return $allPosts ?? [];
     }
 }

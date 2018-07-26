@@ -5,33 +5,33 @@ class ModelRepository
     private $dbConnector;
     private $className;
 
-    public function __construct(DbConnector $dbConnector, $className)
+    public function __construct($className)
     {
-        $this->dbConnector = $dbConnector;
+        $this->dbConnector = DbConnector::getInstance();
         $this->className = $className;
+        $class = explode('\\', $className);
+        $this->table = strtolower(end($class)) . 's';
+    }
+
+    public function getClass()
+    {
+        return $this->className;
     }
 
     public function getById($id)
     {
-        return $this->fetch("$this->className",'SELECT * FROM ' . strtolower($this->className) . 's where id=? LIMIT 1', 'i', $id);
+        return $this->fetch('SELECT * FROM ? where id=? LIMIT 1', 'si', $this->table, $id);
     }
 
-    public function fetch($className,...$params)
-    {
-        return $this->fetchObject("$className",...$params);
-    }
-
-    public function fetchObject($className, ...$params) {
-        $result = $this->dbConnector->executeQuery($params[0],...$params);
-        $className = explode("\\",$className);
-        $className = end($className);
+    public function fetch($sql, ...$params) {
+        $result = $this->dbConnector->executeQuery($sql, ...$params);
 
         if (!$result) {
             return null;
         }
 
         $properties = $result->fetch_assoc();
-        $object = new $className();
+        $object = new $this->className();
 
         foreach ($properties as $property=>$value) {
             $object->{$this->getSetter($property)}($value);
@@ -39,24 +39,22 @@ class ModelRepository
         return $object;
     }
 
-    public function fetchArray($className, ...$params){
-        $result = $this->dbConnector->executeQuery($params[0],...$params);
-        $className = explode("\\",$className);
-        $className = end($className);
+    public function fetchArray($sql, ...$params) {
+        $result = $this->dbConnector->executeQuery($sql, ...$params);
 
         if (!$result) {
             return null;
         }
 
-        $objects[] = null;
+        $objects = [];
         while ($properties = $result->fetch_assoc()) {
-            $object = new $className();
+            $object = new $this->className();
             foreach ($properties as $property=>$value) {
                 $object->{$this->getSetter($property)}($value);
             }
-            array_push($objects,$object);
+            $objects[] = $object;
         }
-        array_shift($objects);
+
         return $objects;
     }
 

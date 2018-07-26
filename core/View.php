@@ -1,13 +1,14 @@
 <?php
-//TODO interface with render method so all views must have a render method
-    class View {
+
+    class View implements ViewInterface {
         protected $_head, $_body, $_siteTitle = SITE_TTTLE, $_outputBuffer, $_layout = DEFAULT_LAYOUT;
 
         //in case of a different OS we switch the seperator
-        public function render($viewName){
+        public function render($viewName, $params){
             $viewAry = explode('/', $viewName);
             $viewString = implode(DS, $viewAry);
             if (file_exists(ROOT . DS . 'app' . DS . 'View' . DS . $viewString . '.php')){
+                $view = $params ?? [];
                 include (ROOT . DS . 'app' . DS . 'View' . DS . $viewString . '.php');
                include (ROOT . DS . 'app' . DS . 'View' . DS . 'layouts'. DS . $this->_layout . '.php');
             }else {

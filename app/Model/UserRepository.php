@@ -2,25 +2,18 @@
 
 class UserRepository extends ModelRepository
 {
-    private $class;
-
     public function __construct()
     {
-        $this->class = explode('\\',User::class);
-        $this->class = end($this->class);
-        parent::__construct($this->getConnect(), $this->class);
+        parent::__construct(User::class);
     }
 
-    /**
-     * @return mixed
-     */
-    public function getClass()
+    public function getUserByCredentials($username,$password)
     {
-        return $this->class;
-    }
-
-    public function getConnect()
-    {
-        return $connect = DbConnector::getInstance();
+        return $this->fetch(
+                'Select * from '.$this->table.' where username=? and password=?',
+                'ss',
+                $username,
+                $password
+            );
     }
 }

@@ -10,6 +10,11 @@
 
         public function indexAction()
         {
-            $this->view->render('home/index');
+            $repo = new PostsRepository();
+            $allPosts = $repo->getAllPosts();
+            $this->view->render('home/index',
+                [
+                    'allPosts' => $allPosts
+                ]);
         }
     }

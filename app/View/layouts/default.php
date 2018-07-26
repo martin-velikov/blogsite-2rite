@@ -33,9 +33,7 @@
         </div><!-- /.shell -->
     </div><!-- /.header -->
 
-    <h1> Welcome to <?= $this->siteTitle(); ?> </h1>
-
-
+    <?php include_once "app/View/blog/showblogs.php"?>
 
 </body>
 

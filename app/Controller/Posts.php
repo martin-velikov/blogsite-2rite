@@ -9,13 +9,23 @@
 
         public function indexAction()
         {
-            $this->view->render('components/main');
+            $repo = new PostsRepository();
+            $allPosts = $repo->getAllPosts();
+
+            $this->view->render('blog/showblogs',
+                [
+                    'allPosts' => $allPosts
+                ]);
         }
 
         public function titleAction($title)
         {
-            $allPosts = new GetPostByTitle();
-            $this->view->render('components/main');
-            return $allPosts->getPosts($title);
+            $repo = new PostsRepository();
+            $allPosts = $repo->getPostsByTitle($title);
+
+            $this->view->render('home/index',
+                [
+                'allPosts' => $allPosts
+                ]);
         }
     }

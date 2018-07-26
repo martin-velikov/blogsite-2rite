@@ -22,7 +22,7 @@ class DbConnector
         $this->connection = new mysqli($this->HOST, $this->USER,
             $this->PASSWORD, $this->DB);
 
-        if(mysqli_connect_error()) {
+        if(mysqli_connect_error() || !$this->connection) {
             trigger_error("Failed to connect to to MySQL: " . mysqli_connect_error(),
                 E_USER_ERROR);
         }
@@ -35,10 +35,9 @@ class DbConnector
 
     public function executeQuery($sql, ...$params)
     {
-        array_shift($params);
         $connect = $this->connection->prepare($sql);
 
-        if ($sql) {
+        if (count($params)) {
             $connect->bind_param(...$params);
         }
         $connect->execute();
