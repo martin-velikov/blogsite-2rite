@@ -31,15 +31,17 @@ class PostsRepository extends ModelRepository
         return $allPosts ?? [];
     }
 
-    public function getPostsByCategory($category){
+    public function getPostsByCategory($category)
+    {
         $allPosts = $this->fetchArray(
            'select username,date,category_name,title,blog_content
-            from post_category
-            inner join '.strtolower($this->getClass()).'s on post_category.id='.strtolower($this->getClass()).'s.category
-            inner join users on '.strtolower($this->getClass()).'s.user_id=users.id
-            where category_name=?',
+                 from '.$this->table.'
+                 inner join post_category on category=post_category.id
+                 inner join users on user_id=users.id
+                 where category_name=?',
             's',$category);
 
         return $allPosts ?? [];
     }
+
 }

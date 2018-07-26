@@ -12,9 +12,13 @@
             $repo = new PostsRepository();
             $allPosts = $repo->getAllPosts();
 
-            $this->view->render('blog/showblogs',
+            $repo = new CategoryRepository();
+            $allCategories = $repo->getAllCategories();
+
+            $this->view->render('home/index',
                 [
-                    'allPosts' => $allPosts
+                    'allPosts' => $allPosts,
+                    'categories' => $allCategories
                 ]);
         }
 
@@ -23,9 +27,28 @@
             $repo = new PostsRepository();
             $allPosts = $repo->getPostsByTitle($title);
 
+            $repo = new CategoryRepository();
+            $allCategories = $repo->getAllCategories();
+
             $this->view->render('home/index',
                 [
-                'allPosts' => $allPosts
+                    'allPosts' => $allPosts,
+                    'categories' => $allCategories
+                ]);
+        }
+
+        public function categoryAction($category)
+        {
+            $repo = new PostsRepository();
+            $allPosts = $repo->getPostsByCategory($category);
+
+            $repo = new CategoryRepository();
+            $allCategories = $repo->getAllCategories();
+
+            $this->view->render('home/index',
+                [
+                    'allPosts' => $allPosts,
+                    'categories' => $allCategories
                 ]);
         }
     }

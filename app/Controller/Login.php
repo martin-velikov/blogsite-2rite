@@ -14,9 +14,14 @@ class Login extends Router
             $password = $_POST['password'];
             $repo = new UserRepository();
             $user = $repo->getUserByCredentials($username, $password);
-            $_SESSION['User'] = $user;
-        }
+            if ($user->getId() === null) {
+                $user = null;
+            }
 
+            if ($user != null) {
+                $_SESSION['User'] = $user;
+            }
+        }
         header('location:..');
         exit;
     }

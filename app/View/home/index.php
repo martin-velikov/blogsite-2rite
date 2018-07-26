@@ -1,10 +1,11 @@
-<?php $this->setSiteTitle('Home'); ?>
+<?php $this->setSiteTitle('Blogsite 2Rite'); ?>
+
 
 <?php $this->start('head'); ?>
-<meta content="test" />
+
 <?php $this->end(); ?>
 
-<?php $this->start('body'); ?>
 
+<?php $this->start('body'); ?>
 
 <?php $this->end(); ?>

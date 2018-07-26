@@ -12,8 +12,6 @@
 </head>
 
 <body>
-
-
     <div class="header">
         <div class="shell">
             <div class="header__body" id="headerBody">
@@ -32,9 +30,21 @@
             </div><!-- /.header__body -->
         </div><!-- /.shell -->
     </div><!-- /.header -->
+    <div class="main">
+        <div class='container'>
+            <div class='shell'>
+                <div class="blogs" id="blogs">
+                    <?php include_once "app/View/components/sidebar.php"?>
 
-    <?php include_once "app/View/blog/showblogs.php"?>
-
+                    <?php include_once "app/View/blog/showblogs.php"?>
+                </div><!-- /.blogs -->
+            </div><!-- /.shell -->
+        </div><!-- /.container -->
+    </div><!-- /.main -->
 </body>
-
+<div class="footer">
+    <div class="shell">
+        <span>&copy2018 2Rite inc. All rights reserved</span>
+    </div><!-- /.shell -->
+</div><!-- /.footer -->
 </html>

@@ -12,9 +12,14 @@
         {
             $repo = new PostsRepository();
             $allPosts = $repo->getAllPosts();
+
+            $repo = new CategoryRepository();
+            $allCategories = $repo->getAllCategories();
+
             $this->view->render('home/index',
                 [
-                    'allPosts' => $allPosts
+                    'allPosts' => $allPosts,
+                    'categories' => $allCategories
                 ]);
         }
     }
